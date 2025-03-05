@@ -45,21 +45,6 @@ const ProductDetailModal = ({
                     layout="fill"
                     objectFit="cover"
                   />
-                  {/* Logo and Halal Badge */}
-                  <div className="absolute top-2 left-2 right-2 flex justify-between items-start">
-                    <Image
-                      src="/images/logo-pangxito.png"
-                      alt="Pangxito Logo"
-                      width={80}
-                      height={30}
-                    />
-                    <Image
-                      src="/images/halal-logo.png"
-                      alt="Halal Certified"
-                      width={30}
-                      height={30}
-                    />
-                  </div>
                 </div>
               </div>
             </div>
@@ -220,7 +205,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({
   return (
     <section className="py-12 bg-gray-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl font-bold text-gray-800 text-center mb-8">
+        <h2 className="text-4xl font-bold text-red-600 text-center mb-8">
           Produk Kami
         </h2>
 
@@ -256,7 +241,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({
           <div className="text-center mt-8">
             <Link
               href="/products"
-              className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-full transition-colors duration-300 text-sm font-medium"
+              className="bg-yellow-400 hover:bg-yellow-600 text-red-600 py-2 px-6 rounded-full transition-colors duration-300 text-sm font-medium"
             >
               Lihat Semua Produk
             </Link>

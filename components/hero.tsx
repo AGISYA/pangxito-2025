@@ -1,6 +1,8 @@
+"use client"; // Tambahkan ini di baris pertama
+
 import type React from "react";
 import Image from "next/image";
-import { FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { FaStar, FaStarHalfAlt, FaWhatsapp } from "react-icons/fa";
 
 interface HeroProps {
   hero: {
@@ -13,13 +15,18 @@ interface HeroProps {
   };
 }
 
+const handleOrder = () => {
+  const message = encodeURIComponent("Halo, saya ingin memesan.");
+  window.open(`https://wa.me/6281234567890?text=${message}`, "_blank");
+};
+
 const Hero: React.FC<HeroProps> = ({ hero }) => {
   if (!hero) {
-    return null; // or some fallback UI
+    return null;
   }
 
   return (
-    <div className="">
+    <div className="h-screen">
       <Image
         alt={hero.title || "Hero Image"}
         src={hero.image || "/placeholder.svg"}
@@ -28,10 +35,8 @@ const Hero: React.FC<HeroProps> = ({ hero }) => {
         priority
       />
 
-      {/* Overlay to improve text readability */}
       <div className="absolute inset-0 bg-black opacity-30 z-20"></div>
 
-      {/* Hero Content */}
       <div className="relative w-full h-full pt-16 md:pt-24 z-30">
         <div className="flex justify-start p-4 md:p-8">
           <div className="relative bg-white p-4 md:p-6 rounded-lg text-center shadow-lg max-w-xs md:max-w-sm transition-transform hover:scale-105">
@@ -49,14 +54,16 @@ const Hero: React.FC<HeroProps> = ({ hero }) => {
             <div className="text-black mb-3 md:mb-4 text-sm md:text-base">
               {hero.description}
             </div>
-            <button className="bg-red-600 text-white py-2 px-6 rounded-full text-sm md:text-base shadow-md hover:bg-red-500 transition duration-300 font-medium">
-              PESAN SEKARANG
+            <button
+              onClick={handleOrder}
+              className="flex items-center justify-center px-4 py-2 text-white bg-green-500 rounded-full hover:bg-green-600 transition-colors"
+            >
+              <FaWhatsapp className="mr-2" /> Pesan Sekarang
             </button>
           </div>
         </div>
       </div>
 
-      {/* Customer Feedback */}
       <div className="absolute bottom-8 right-8 bg-yellow-200 p-6 rounded-xl w-72 md:w-80 shadow-lg z-30 transition-transform transform hover:scale-105">
         <div className="flex items-start mb-4">
           <div className="relative w-14 h-14 mr-3 flex-shrink-0">

@@ -1,11 +1,35 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
+
+// Fungsi untuk membuka WhatsApp
+const handleOrder = () => {
+  const message = encodeURIComponent("Halo, saya ingin memesan.");
+  window.open(`https://wa.me/6281234567890?text=${message}`, "_blank");
+};
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
+
+  // Fungsi untuk scroll ke bagian tertentu atau refresh halaman
+  const scrollToSection = (id: string) => {
+    if (id === "hero") {
+      if (window.location.pathname === "/") {
+        window.location.reload(); // Refresh halaman jika sudah di halaman utama
+      } else {
+        router.push("/"); // Navigasi ke halaman utama jika berada di halaman lain
+      }
+    } else {
+      const section = document.getElementById(id);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -16,7 +40,10 @@ const Navbar = () => {
       <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <button
+            onClick={() => scrollToSection("hero")}
+            className="flex items-center"
+          >
             <Image
               src="/images/logo-pangxito.png"
               alt="Pangxito Logo"
@@ -24,40 +51,47 @@ const Navbar = () => {
               height={40}
               priority
             />
-          </Link>
+          </button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            <Link
-              href="/"
+            <button
+              onClick={() => scrollToSection("hero")}
               className="text-gray-800 hover:text-red-600 transition duration-300"
             >
               Home
-            </Link>
-            <Link
-              href="/products"
-              className="text-gray-800 hover:text-red-600 transition duration-300"
-            >
-              Produk
-            </Link>
-            <Link
-              href="/#features"
-              className="text-gray-800 hover:text-red-600 transition duration-300"
-            >
-              Keunggulan
-            </Link>
-            <Link
-              href="/#pangxito"
+            </button>
+            <button
+              onClick={() => scrollToSection("about")}
               className="text-gray-800 hover:text-red-600 transition duration-300"
             >
               Tentang Kami
-            </Link>
-            <Link
-              href="/#pesan-sekarang"
-              className="bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-500 transition duration-300"
+            </button>
+            <button
+              onClick={() => scrollToSection("products")}
+              className="text-gray-800 hover:text-red-600 transition duration-300"
             >
-              Pesan Sekarang
-            </Link>
+              Produk
+            </button>
+            <button
+              onClick={() => scrollToSection("features")}
+              className="text-gray-800 hover:text-red-600 transition duration-300"
+            >
+              Keunggulan
+            </button>
+            <button
+              onClick={() => scrollToSection("order")}
+              className="text-gray-800 hover:text-red-600 transition duration-300"
+            >
+              Kontak
+            </button>
+            {/* Tombol WhatsApp */}
+            <button
+              onClick={handleOrder}
+              className="flex items-center justify-center px-4 py-2 text-white bg-green-500 rounded-full hover:bg-green-600 transition-colors"
+            >
+              <FaWhatsapp className="mr-2" /> Pesan Sekarang
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -75,41 +109,49 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-white py-4 px-4 shadow-lg">
           <div className="flex flex-col space-y-4">
-            <Link
-              href="/"
+            <button
+              onClick={() => {
+                scrollToSection("hero");
+                setIsMenuOpen(false);
+              }}
               className="text-gray-800 hover:text-red-600 transition duration-300"
-              onClick={() => setIsMenuOpen(false)}
             >
               Home
-            </Link>
-            <Link
-              href="/products"
+            </button>
+            <button
+              onClick={() => {
+                scrollToSection("about");
+                setIsMenuOpen(false);
+              }}
               className="text-gray-800 hover:text-red-600 transition duration-300"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Produk
-            </Link>
-            <Link
-              href="/#features"
-              className="text-gray-800 hover:text-red-600 transition duration-300"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Keunggulan
-            </Link>
-            <Link
-              href="/#pangxito"
-              className="text-gray-800 hover:text-red-600 transition duration-300"
-              onClick={() => setIsMenuOpen(false)}
             >
               Tentang Kami
-            </Link>
-            <Link
-              href="/#pesan-sekarang"
-              className="bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-500 transition duration-300 inline-block text-center"
-              onClick={() => setIsMenuOpen(false)}
+            </button>
+            <button
+              onClick={() => {
+                scrollToSection("products");
+                setIsMenuOpen(false);
+              }}
+              className="text-gray-800 hover:text-red-600 transition duration-300"
             >
-              Pesan Sekarang
-            </Link>
+              Produk
+            </button>
+            <button
+              onClick={() => {
+                scrollToSection("features");
+                setIsMenuOpen(false);
+              }}
+              className="text-gray-800 hover:text-red-600 transition duration-300"
+            >
+              Keunggulan
+            </button>
+            {/* Tombol WhatsApp Mobile */}
+            <button
+              onClick={handleOrder}
+              className="flex items-center justify-center px-4 py-2 text-white bg-green-500 rounded-full hover:bg-green-600 transition-colors"
+            >
+              <FaWhatsapp className="mr-2" /> Pesan
+            </button>
           </div>
         </div>
       )}

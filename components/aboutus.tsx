@@ -3,7 +3,7 @@ import Image from "next/image";
 const AboutUs = () => {
   return (
     <section id="about-us" className="py-16 bg-white">
-      <div className="container md:mt-96 mt-[650px]   mx-auto px-4">
+      <div className="container  mx-auto px-4">
         <div className="flex flex-col lg:flex-row   mx-10 items-center">
           <div className="lg:w-1/2 mb-8 lg:mb-0 lg:pr-8">
             <Image
@@ -15,7 +15,7 @@ const AboutUs = () => {
             />
           </div>
           <div className="lg:w-1/2">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">
+            <h2 className="text-4xl font-bold text-red-600 mb-4">
               Tentang Pangxito
             </h2>
             <p className="text-gray-600 mb-6">

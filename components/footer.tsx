@@ -1,14 +1,12 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { FaFacebook, FaInstagram, FaTwitter, FaWhatsapp } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { SiTiktok } from "react-icons/si";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className="relative bg-white text-gray-800 py-10">
-      <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-yellow-300 opacity-30"></div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row justify-between pt-6 pb-10 md:py-8">
           <div className="mb-8 md:mb-0 md:w-1/3">
@@ -32,7 +30,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 transition duration-300"
             >
-              <FaWhatsapp className="mr-2" /> Hubungi Kami
+              Hubungi Kami
             </Link>
           </div>
 
@@ -67,35 +65,24 @@ const Footer = () => {
             </h3>
             <div className="flex space-x-4 mb-6">
               <a
-                href="#"
-                aria-label="Facebook"
-                className="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition duration-300"
-              >
-                <FaFacebook className="text-xl" />
-              </a>
-              <a
-                href="#"
+                href="https://www.instagram.com/pangxito.id?"
                 aria-label="Instagram"
                 className="bg-pink-600 text-white p-2 rounded-full hover:bg-pink-700 transition duration-300"
               >
                 <FaInstagram className="text-xl" />
               </a>
               <a
-                href="#"
-                aria-label="Twitter"
-                className="bg-blue-400 text-white p-2 rounded-full hover:bg-blue-500 transition duration-300"
+                href="https://www.tiktok.com/@pangxito?"
+                aria-label="TikTok"
+                className="bg-black text-white p-2 rounded-full hover:bg-gray-800 transition duration-300"
               >
-                <FaTwitter className="text-xl" />
+                <SiTiktok className="text-xl" />
               </a>
             </div>
             <div className="text-sm text-gray-600">
               Alamat: Jl. Contoh No. 123, Kota, Indonesia
             </div>
           </div>
-        </div>
-
-        <div className="border-t border-gray-200 pt-4 text-center text-sm text-gray-600">
-          © {currentYear} Pangxito. All rights reserved.
         </div>
       </div>
     </footer>

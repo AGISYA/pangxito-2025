@@ -6,6 +6,7 @@ import RecipesPangxito from "@/components/recipes-pangxito";
 import OrderNow from "@/components/order-now";
 import Footer from "@/components/footer";
 import AboutUs from "@/components/aboutus";
+import ScrollToTop from "@/components/scroll-totop";
 
 export default function Home() {
   const heroData = {
@@ -20,12 +21,25 @@ export default function Home() {
   return (
     <div className="bg-white">
       <Navbar />
-      <Hero hero={heroData} />
-      <AboutUs />
-      <ProductSection showAllProducts={false} />
-      <FeaturesSection />
-      <RecipesPangxito />
-      <OrderNow />
+      <section id="hero">
+        <Hero hero={heroData} />
+      </section>
+      <section id="about">
+        <AboutUs />
+      </section>
+      <section id="products">
+        <ProductSection showAllProducts={false} />
+      </section>
+      <section id="features">
+        <FeaturesSection />
+      </section>
+      <section id="recipes">
+        <RecipesPangxito />
+      </section>
+      <section id="order">
+        <OrderNow />
+      </section>
+      <ScrollToTop />
       <Footer />
     </div>
   );
